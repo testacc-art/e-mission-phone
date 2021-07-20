@@ -4,14 +4,7 @@ name: osx-ubuntu-build-android
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron:  '5 4 * * 0'
+on: [ workflow_dispatch ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -54,6 +47,7 @@ jobs:
     - name: Build android
       shell: bash -l {0}
       run: |
+        ln $ANDROID_HOME/sdk/build-tools/31.0.0/d8 $ANDROID_HOME/sdk/build-tools/31.0.0/dx && ln $ANDROID_HOME/sdk/build-tools/31.0.0/lib/d8.jar $ANDROID_HOME/sdk/build-tools/31.0.0/lib/dx.jar
         echo $PATH
         which gradle
         gradle -version
