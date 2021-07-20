@@ -56,4 +56,4 @@ jobs:
         echo $PATH
         which gradle
         gradle --version
-        npx cordova build android
+        npx cordova build android -- --gradleArg=-PcdvBuildToolsVersion=30.0.0
