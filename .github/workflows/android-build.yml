@@ -48,6 +48,7 @@ jobs:
     - name: Build android
       shell: bash -l {0}
       run: |
+        ln $ANDROID_HOME/build-tools/31.0.0/d8 $ANDROID_HOME/build-tools/31.0.0/dx && ln $ANDROID_HOME/build-tools/31.0.0/lib/d8.jar $ANDROID_HOME/build-tools/31.0.0/lib/dx.jar
         echo $PATH
         which gradle
         gradle -version
@@ -58,5 +59,5 @@ jobs:
         gradle --version
         # export ORG_GRADLE_PROJECT_cdvBuildToolsVersion=30.0.0
         # npx cordova build android 
-        npx cordova build android -- --gradleArg="-PcdvBuildToolsVersion=30.0.0"
+        npx cordova build android
         # -- --gradleArg=-PcdvBuildToolsVersion=30.0.0
